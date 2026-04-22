@@ -22,7 +22,7 @@ public class MyBKTree {
         int dist = levenstein(newNode.getWord(), current.getWord());
 
         if (dist == 0) {
-            return; // слово уже есть в дереве
+            return; 
         }
 
         Node child = current.getChildes().get(dist);
@@ -56,7 +56,7 @@ public class MyBKTree {
             result.add(current.getWord());
         }
 
-        int start = dist - tolerance;
+        int start = abs(dist - tolerance);
         int end = dist + tolerance;
 
         for (Map.Entry<Integer, Node> entry : current.getChildes().entrySet()) {
@@ -107,6 +107,10 @@ public class MyBKTree {
 
     private int min(int first, int second, int third){
         return Math.min(Math.min(first, second), third);
+    }
+
+    private int abs(int number){
+        return Math.abs(number);
     }
 }
 
